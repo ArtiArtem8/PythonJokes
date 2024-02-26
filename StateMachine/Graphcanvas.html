@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Конечный автомат</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        #canvas {
+            border: 1px solid #ccc;
+            cursor: crosshair;
+            margin-left: 10px;
+            float: left;
+        }
+    </style>
+</head>
+<body>
+<h1>Постройщик конечного автомата</h1>
+<p class="text-center">Кликните что бы поставить узел.</p>
+<p class="text-center">Лкм по узлу и затем по другому что бы добавить связь.</p>
+<p class="text-center">ПКМ по узлу, что бы перетащить узел</p>
+<p class="text-center">СКМ по узлу, что бы удалить узел</p>
+<div class="flex-container">
+    <div id="myCanvas">
+        <canvas id="canvas" width="800" height="600" oncontextmenu="return false;"></canvas>
+    </div>
+    <div id="data-table-container"></div>
+    <button id="exportBtn">Export Data</button>
+    <button id="debugBtn">Debug Data</button>
+</div>
+
+<div class="container mt-4">
+    <table class="table table-bordered" id="object1-table">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">Key</th>
+            <th scope="col">Value</th>
+        </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+</div>
+<div class="container mt-4">
+    <table class="table table-bordered" id="object2-table">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">Key</th>
+            <th scope="col">Value</th>
+        </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+</div>
+<div class="container mt-4">
+    <table class="table table-bordered" id="object3-table">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">Key</th>
+            <th scope="col">Value</th>
+        </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+</div>
+<script src="draw.js"></script>
+<script src="table_data.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
