@@ -48,7 +48,8 @@ function drawNode(x, y, name) {
   ctx.fill();
   ctx.fillStyle = 'white';
   ctx.font = 'bold 12px Arial';
-  ctx.fillText(name, x - 15, y);
+  ctx.textAlign = 'center';
+  ctx.fillText(name, x, y + 4);
   ctx.closePath();
 }
 
