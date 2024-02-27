@@ -7,6 +7,7 @@ from Order import Order
 @dataclass(repr=True)
 class Driver:
     """Driver for order"""
+    id: int
     cars: list[Car]
     orders = list[Order]
 

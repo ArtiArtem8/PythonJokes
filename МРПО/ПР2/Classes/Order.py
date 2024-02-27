@@ -9,6 +9,7 @@ from Location import Location
 @dataclass
 class Order:
     """Order for taxi class"""
+    id: int
     car: Car
     client: Client
     start_location: Location
