@@ -13,6 +13,3 @@ class Car:
     model: str
     color: str
     year: int
-
-
-
