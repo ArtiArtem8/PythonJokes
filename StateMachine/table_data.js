@@ -103,26 +103,34 @@ function addTableToHTML(data, headers) {
 
   const tableContainer = document.getElementById('data-table-container');
   tableContainer.style.float = 'right'; // Align the table to the right
+  tableContainer.style.width = 'auto'; // Align the table to the right
   tableContainer.style.marginLeft = '20px'; // Add some margin between the canvas and the table
   tableContainer.style.marginRight = '20px'; // Add some margin between the canvas and the table
 
   const table = document.createElement('table');
+  table.className = "table table-sm table-hover table-striped"
   table.id = 'data-table'; // Set an ID for the table
   table.style.borderCollapse = 'collapse';
+  table.style.width = "auto";
 
   // Add table header
+  const thead = document.createElement("thead");
   const headerRow = document.createElement('tr');
+  headerRow.className = "table-active";
   headers.forEach(title => {
     const th = document.createElement('th');
     th.textContent = title;
+    th.scope = "col";
     th.style.border = '1px solid black';
     th.style.padding = '8px';
     th.style.textAlign = 'center';
     headerRow.appendChild(th);
   });
-  table.appendChild(headerRow);
+  thead.appendChild(headerRow);
+  table.appendChild(thead);
 
   // Add table rows
+  const tbody = document.createElement("tbody");
   data.forEach((rowValues, index) => {
     const row = document.createElement('tr');
     rowValues.forEach(value => {
@@ -133,9 +141,10 @@ function addTableToHTML(data, headers) {
       td.style.textAlign = 'center';
       row.appendChild(td);
     });
-    table.appendChild(row);
+    tbody.appendChild(row);
   });
 
+  table.appendChild(tbody);
   tableContainer.appendChild(table);
 
   // Append the table container to the body

@@ -44,11 +44,12 @@ const rotateVector = function (vec, ang) {
 function drawNode(x, y, name) {
   ctx.beginPath();
   ctx.arc(x, y, RADIUS, 0, Math.PI * 2);
-  ctx.fillStyle = '#0095DD';
+  ctx.fillStyle = "#007bff";
   ctx.fill();
   ctx.fillStyle = 'white';
   ctx.font = 'bold 12px Arial';
-  ctx.fillText(name, x - 15, y);
+  ctx.textAlign = 'center';
+  ctx.fillText(name, x, y + 4);
   ctx.closePath();
 }
 
