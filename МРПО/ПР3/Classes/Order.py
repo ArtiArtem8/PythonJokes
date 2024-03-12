@@ -2,10 +2,10 @@ from dataclasses import dataclass
 from datetime import datetime
 from enum import Enum
 
-from Car import Car
-from Client import Client
-from Driver import Driver
-from Location import Location
+from .Car import Car
+from .Client import Client
+from .Driver import Driver
+from .Location import Location
 
 
 class OrderStatus(Enum):

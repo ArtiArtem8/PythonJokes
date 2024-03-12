@@ -1,13 +1,13 @@
+from dataclasses import dataclass, field
+
 from .ABCRepository import AbstractRepository
 from ..Classes.Order import Order
 
 
-# noinspection PyMissingConstructor
+@dataclass
 class OrderRepository(AbstractRepository):
     """Repository for managing orders."""
-
-    def __init__(self):
-        self.orders = []
+    orders: list[Order] = field(default_factory=list)
 
     def add(self, order: Order):
         self.orders.append(order)

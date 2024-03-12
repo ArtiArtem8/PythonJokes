@@ -1,19 +1,19 @@
+from dataclasses import field, dataclass
+
 from .ABCRepository import AbstractRepository
 from ..Classes.Driver import Driver
 
 
-# noinspection PyMissingConstructor
+@dataclass
 class DriverRepository(AbstractRepository):
     """Repository for managing drivers."""
+    drivers: list[Driver] = field(default_factory=list)
 
     def remove(self, item):
         pass
 
     def get_all(self):
         pass
-
-    def __init__(self):
-        self.drivers = []
 
     def add(self, driver: Driver):
         self.drivers.append(driver)

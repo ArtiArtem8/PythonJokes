@@ -1,7 +1,7 @@
 from dataclasses import dataclass, field
 from typing import TYPE_CHECKING
 
-from Car import Car
+from .Car import Car
 
 if TYPE_CHECKING:
     from .Order import Order
