@@ -1,6 +1,9 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 
-from Order import Order
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from .Order import Order
 
 
 @dataclass(frozen=True)
@@ -8,4 +11,4 @@ class Client:
     """Client for order"""
     id: int
     phone_number: str
-    orders = list[Order]
+    orders: list['Order'] = field(default_factory=list)

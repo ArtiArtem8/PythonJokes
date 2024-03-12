@@ -28,5 +28,5 @@ class Location:
 
 if __name__ == '__main__':
     location1 = Location(-41.32, 174.81)
-    location2 = Location(40.96, -5.50)
-    print(location1.distance_to(location2, unit='m'))
+    location2 = Location(40.96, -160.50)
+    print(location1.distance_to(location2, unit='km'), "km")

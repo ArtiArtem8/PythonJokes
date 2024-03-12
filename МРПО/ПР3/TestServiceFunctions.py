@@ -1,19 +1,19 @@
 import unittest
 
-from МРПО.ПР3.Classes.Car import Car
+from МРПО.ПР3.Classes import Car
 from МРПО.ПР3.Classes.Driver import Driver
 from МРПО.ПР3.Classes.Location import Location
 from МРПО.ПР3.Classes.Order import Order
 
 
-def check_seats_availability(car: Car, num_passengers: int) -> bool:
+def test_check_seats_availability(car: Car, num_passengers: int) -> bool:
     """Check if the car has enough seats for the given number of passengers."""
-    return car.seats >= num_passengers
+    assert car.seats >= num_passengers
 
 
 def check_driver_availability(driver: Driver, current_orders: list[Order]) -> bool:
     """Check if the driver is available for a new order."""
-    return len([order for order in current_orders if order.driver == driver]) == 0
+    assert len([order for order in current_orders if order.driver == driver]) == 0
 
 
 def can_complete_order(order: Order) -> bool:
@@ -39,10 +39,10 @@ def track_driver_location(driver_id: int) -> Location:
     pass
 
 
-class MyTestCase(unittest.TestCase):
-    def test_something(self):
-        self.assertEqual(True, False)  # add assertion here
-
-
-if __name__ == '__main__':
-    unittest.main()
+# class MyTestCase(unittest.TestCase):
+#     def test_something(self):
+#         self.assertEqual(True, False)  # add assertion here
+#
+#
+# if __name__ == '__main__':
+#     unittest.main()

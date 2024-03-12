@@ -4,8 +4,8 @@ from enum import Enum
 
 from Car import Car
 from Client import Client
-from Location import Location
 from Driver import Driver
+from Location import Location
 
 
 class OrderStatus(Enum):
