@@ -1,6 +1,6 @@
 from dataclasses import field, dataclass
 
-from .ABCRepository import AbstractRepository
+from ABCRepository import AbstractRepository
 from ..Classes.Car import Car
 
 

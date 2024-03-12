@@ -2,13 +2,17 @@ from dataclasses import dataclass
 from datetime import datetime
 from enum import Enum
 
-from .Car import Car
-from .Client import Client
-from .Driver import Driver
-from .Location import Location
+from МРПО.ПР3.Classes.Car import Car
+from МРПО.ПР3.Classes.Client import Client
+from МРПО.ПР3.Classes.Driver import Driver
+from МРПО.ПР3.Classes.Location import Location
+from МРПО.ПР3.Classes.id_mixin import IdMixin
 
 
 class OrderStatus(Enum):
+    """
+    An Enum class representing the status of an order.
+    """
     PENDING = "Pending"
     IN_PROGRESS = "In Progress"
     WAITING = "Waiting"
@@ -17,6 +21,9 @@ class OrderStatus(Enum):
 
 
 class OrderCategory(Enum):
+    """
+    An Enum class representing the category of an order.
+    """
     ECONOMIC = "Economic"
     COMFORT = "Comfort"
     BUSINESS = "Business"
@@ -24,9 +31,8 @@ class OrderCategory(Enum):
 
 
 @dataclass
-class Order:
+class Order(IdMixin):
     """Order for taxi"""
-    id: int
     car: Car
     driver: Driver
     client: Client

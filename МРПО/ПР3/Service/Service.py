@@ -1,9 +1,9 @@
 from datetime import datetime
 
-from ..Classes.Car import Car
-from ..Classes.Driver import Driver
-from ..Classes.Location import Location
-from ..Classes.Order import Order, OrderStatus, OrderCategory
+from МРПО.ПР3.Classes.Car import Car
+from МРПО.ПР3.Classes.Driver import Driver
+from МРПО.ПР3.Classes.Location import Location
+from МРПО.ПР3.Classes.Order import Order, OrderStatus, OrderCategory
 
 
 class OrderService:
@@ -41,7 +41,7 @@ class OrderService:
         """
         Generates a unique order ID.
         """
-        pass
+        return 0
 
     @staticmethod
     def check_seats_availability(car: Car, num_passengers: int) -> bool:

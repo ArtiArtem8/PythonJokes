@@ -2,8 +2,6 @@ from abc import ABC, abstractmethod
 
 
 class AbstractRepository(ABC):
-    def __init__(self):
-        raise NotImplementedError
 
     @abstractmethod
     def add(self, item):
@@ -12,6 +10,7 @@ class AbstractRepository(ABC):
     @abstractmethod
     def remove(self, item):
         raise NotImplementedError
+        return True
 
     @abstractmethod
     def get_all(self):
