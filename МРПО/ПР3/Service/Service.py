@@ -4,14 +4,18 @@ from МРПО.ПР3.Classes.Car import Car
 from МРПО.ПР3.Classes.Driver import Driver
 from МРПО.ПР3.Classes.Location import Location
 from МРПО.ПР3.Classes.Order import Order, OrderStatus, OrderCategory
+from МРПО.ПР3.Repository.CarRepository import CarRepository
+from МРПО.ПР3.Repository.ClientRepository import ClientRepository
+from МРПО.ПР3.Repository.DriverRepository import DriverRepository
+from МРПО.ПР3.Repository.OrderRepository import OrderRepository
 
 
 class OrderService:
     def __init__(self, order_repository, car_repository, driver_repository, client_repository):
-        self.order_repository = order_repository
-        self.car_repository = car_repository
-        self.driver_repository = driver_repository
-        self.client_repository = client_repository
+        self.order_repository: OrderRepository = order_repository
+        self.car_repository: CarRepository = car_repository
+        self.driver_repository: DriverRepository = driver_repository
+        self.client_repository: ClientRepository = client_repository
 
     def create_order(self, car_id: int, driver_id: int, client_id: int, start_location: Location,
                      current_driver_location: Location, end_location: Location, price: float,
@@ -25,7 +29,7 @@ class OrderService:
             raise ValueError("Not enough seats available in the car.")
 
         driver = self.driver_repository.get_by_id(driver_id)
-        if not self.check_driver_availability(driver, []):  # Assuming no current orders
+        if not self.check_driver_availability(driver, self.order_repository.get_all()):  # Assuming no current orders
             raise ValueError("Driver is not available.")
 
         client = self.client_repository.get_by_id(client_id)
@@ -71,3 +75,16 @@ class OrderService:
         order = self.order_repository.get_by_id(order_id)
         if order.category == OrderCategory.ECONOMIC:
             return distance * time
+
+    def update_start_location(self, order_id: int, new_start_location: Location) -> Location:
+        order = self.order_repository.get_by_id(order_id)
+        order.start_location = new_start_location
+        self.order_repository.update(order)
+
+    def get_order_by_id(self, order_id: int) -> Order:
+        return self.order_repository.get_by_id(order_id)
+
+    def update_order_status(self, order_id: int, new_status: OrderStatus):
+        order = self.order_repository.get_by_id(order_id)
+        order.status = new_status
+        self.order_repository.update(order)

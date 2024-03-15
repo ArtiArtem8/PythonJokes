@@ -19,7 +19,11 @@ class OrderRepository(AbstractRepository):
         raise ValueError("Order not found")
 
     def get_all(self):
-        pass
+        return self.orders
 
     def remove(self, item):
+        self.orders.remove(item)
+
+    def update(self, order):
         pass
+
