@@ -76,15 +76,19 @@ class OrderService:
         if order.category == OrderCategory.ECONOMIC:
             return distance * time
 
-    def update_start_location(self, order_id: int, new_start_location: Location) -> Location:
+    def update_start_location(self, order_id: int, new_start_location: Location) -> Order:
         order = self.order_repository.get_by_id(order_id)
+        if not isinstance(new_start_location, Location):
+            raise ValueError("Invalid start location.")
         order.start_location = new_start_location
         self.order_repository.update(order)
+        return order
 
     def get_order_by_id(self, order_id: int) -> Order:
         return self.order_repository.get_by_id(order_id)
 
-    def update_order_status(self, order_id: int, new_status: OrderStatus):
+    def update_order_status(self, order_id: int, new_status: OrderStatus) -> Order:
         order = self.order_repository.get_by_id(order_id)
         order.status = new_status
         self.order_repository.update(order)
+        return order

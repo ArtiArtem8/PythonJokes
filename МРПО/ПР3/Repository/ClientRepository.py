@@ -1,4 +1,5 @@
-from ABCRepository import AbstractRepository
+from ..Repository.ABCRepository import AbstractRepository
+
 from ..Classes.Client import Client
 from dataclasses import field, dataclass
 

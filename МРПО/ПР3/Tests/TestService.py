@@ -14,7 +14,7 @@ from МРПО.ПР3.Service.Service import OrderService
 
 class TestOrderService(unittest.TestCase):
     def setUp(self):
-        self.order_repository = MagicMock(AbstractRepository)
+        self.order_repository = MagicMock(OrderService)
         self.car_repository = MagicMock(AbstractRepository)
         self.driver_repository = MagicMock(AbstractRepository)
         self.client_repository = MagicMock(AbstractRepository)
@@ -38,7 +38,8 @@ class TestOrderService(unittest.TestCase):
         self.car_repository.get_by_id.return_value = car
         self.driver_repository.get_by_id.return_value = driver
         self.client_repository.get_by_id.return_value = client
-
+        self.order_repository.get_all = MagicMock(return_value=[])
+        self.order_repository.add = MagicMock()
         # Test create_order method
         order = self.order_service.create_order(car_id=1, driver_id=1, client_id=1,
                                                 start_location=start_location,
@@ -75,10 +76,10 @@ class TestOrderService(unittest.TestCase):
                       status=OrderStatus.PENDING)
 
         # Mock the behavior of repositories
-        self.order_repository.get_by_id.return_value = order
+        self.order_repository.get_by_id = MagicMock(return_value=order)
 
         # Test update_start_location method with invalid location
-        with self.assertRaises(InvalidLocationError):
+        with self.assertRaises(ValueError):
             self.order_service.update_start_location(order_id=1, new_start_location=None)
 
     #  Updating the order's start location
@@ -96,7 +97,8 @@ class TestOrderService(unittest.TestCase):
                       status=OrderStatus.PENDING)
 
         # Mock the behavior of repositories
-        self.order_repository.get_by_id.return_value = order
+        self.order_repository.get_by_id = MagicMock(return_value=order)
+        self.order_repository.update =  MagicMock(return_value=order)
 
         # Test update_start_location method
         updated_order = self.order_service.update_start_location(order_id=1, new_start_location=Location(2, 2))
@@ -119,7 +121,7 @@ class TestOrderService(unittest.TestCase):
                       status=OrderStatus.PENDING)
 
         # Mock the behavior of repositories
-        self.order_repository.get_by_id.return_value = order
+        self.order_repository.get_by_id = lambda id: list(filter(lambda x: x.id == id, [order]))[0]
 
         # Test get_order_by_id method
         retrieved_order = self.order_service.get_order_by_id(order_id=1)
@@ -142,7 +144,8 @@ class TestOrderService(unittest.TestCase):
                       status=OrderStatus.PENDING)
 
         # Mock the behavior of repositories
-        self.order_repository.get_by_id.return_value = order
+        self.order_repository.get_by_id = MagicMock(return_value=order)
+        self.order_repository.update = MagicMock(return_value=order)
 
         # Test update_order_status method
         updated_order = self.order_service.update_order_status(order_id=1, new_status=OrderStatus.COMPLETED)

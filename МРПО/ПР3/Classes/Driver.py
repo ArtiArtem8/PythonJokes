@@ -20,7 +20,7 @@ if __name__ == '__main__':
                car_info=CarInfo(year=2003, brand="Tesla", model="Model Y", color="Blue"))
     car2 = Car(owner=None, plate_number="X003PY", id=2, seats=4,
                car_info=CarInfo(year=2015, brand="Toyota", model="Camry", color="Black"))
-    driver = Driver(cars=[car1, car2], id=-1)
+    driver = Driver(cars=[car1, car2], id=1)
     print(driver)
     var = driver.orders
     print(var)

@@ -1,6 +1,7 @@
 from dataclasses import dataclass, field
 
-from ABCRepository import AbstractRepository
+from ..Repository.ABCRepository import AbstractRepository
+
 from МРПО.ПР3.Classes.Order import Order
 
 
