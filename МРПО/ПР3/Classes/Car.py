@@ -15,6 +15,8 @@ VALID_MODELS_BY_BRAND: dict[str, set[str]] = {
     "Tesla": {"Model S", "Model 3", "Model X", "Model Y"}
 }
 
+class CarInfo:
+    pass
 
 @dataclass
 class CarInfo:

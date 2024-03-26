@@ -3,9 +3,10 @@ import random
 from hamming_code import *
 
 
-data = [random.randint(0, 1) for i in range(8)]
+data = [random.randint(0, 1) for i in range(11)]
 print("Data:", data)
-encoded_data = hamming_encode(data)
+encoded_data = hamming_code(data)
+print("hamming", hamming_encode(data))
 print()
 # FIXME: I dont know why, but encode not always work
 print(hamming_syndrome(encoded_data))

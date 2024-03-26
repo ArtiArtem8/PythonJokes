@@ -55,6 +55,59 @@ def calculate_parity_bits(arr):
             arr[-parity_pos] = str(xored)
     return arr
 
+def hamming_code(data):
+    # Определение количества проверочных битов
+    r = 0
+    while 2 ** r < len(data) + r + 1:
+        r += 1
+
+    # Создание кодового слова с нулевыми проверочными битами
+    code = [0] * (len(data) + r)
+
+    # Заполнение кодового слова данными
+    j = 0
+    for i in range(len(code)):
+        if i + 1 not in [2 ** k for k in range(r)]:
+            code[i] = int(data[j])
+            j += 1
+
+    print(code)
+    # Вывод таблицы четности
+    table = []
+
+    for i in range(r):
+        a = [0] * len(code)
+
+        for j in range((2 ** i) - 1, len(code), (2 ** (i + 1))):
+            count = 0
+            while count < 2 ** i:
+                if j + count < len(code):
+                    a[j + count] = 1
+                    count += 1
+                else:
+                    break
+        table.append(a)
+
+
+    # подставлем биты четности
+
+    for i in range(0, r):
+        res = -1
+        a = []
+        b = 0
+        for j in range(len(code)):
+            a.append(code[j] * table[i][j])
+        for c in a:
+            b += c
+        if b % 2 == 0:
+            res = 0
+        else:
+            res = 1
+        code[2 ** i - 1] = res
+    print(code)
+    return code
+
+
 
 def encode_hamming(data):
     prepared_data = prepare_data(data)
@@ -73,9 +126,9 @@ def hamming_encode(message):
 
     # Fill in the message bits
     j = 0
-    for i in range(1, len(encoded_message) + 1):
-        if i & (i - 1) != 0:  # Skip the positions of parity bits
-            encoded_message[i - 1] = int(message[j])
+    for i in range(len(encoded_message)):
+        if i + 1 not in [2**k for k in range(parity_bits)]:  # Skip the positions of parity bits
+            encoded_message[i] = int(message[j])
             j += 1
 
     # Fill in the parity bits
@@ -93,14 +146,15 @@ def hamming_encode(message):
 
 def hamming_decode(encoded_message):
     parity_bits = 0
-    while 2 ** parity_bits < len(encoded_message):
+    while 2 ** parity_bits < len(encoded_message) + parity_bits + 1:
         parity_bits += 1
 
     syndrome = hamming_syndrome(encoded_message)
-    print(syndrome)
+    print(f"{syndrome=}")
     if syndrome != 0:
         encoded_message[syndrome - 1] ^= 1
 
+    print("Исправленное закодированное сообщение:", encoded_message)
     original_message = [encoded_message[i] for i in range(len(encoded_message)) if
                         i + 1 not in [2 ** k for k in range(parity_bits)]]
     return original_message

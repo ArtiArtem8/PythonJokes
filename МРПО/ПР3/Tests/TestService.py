@@ -14,12 +14,7 @@ from МРПО.ПР3.Service.Service import OrderService
 
 class TestOrderService(unittest.TestCase):
     def setUp(self):
-        self.order_repository = MagicMock(OrderService)
-        self.car_repository = MagicMock(AbstractRepository)
-        self.driver_repository = MagicMock(AbstractRepository)
-        self.client_repository = MagicMock(AbstractRepository)
-        self.order_service = OrderService(self.order_repository, self.car_repository, self.driver_repository,
-                                          self.client_repository)
+        self.order_service = OrderService()
 
     def test_create_order(self):
         car = Car(id=1, plate_number="ABC123", seats=4,
@@ -34,14 +29,8 @@ class TestOrderService(unittest.TestCase):
         category = OrderCategory.ECONOMIC
         num_passengers = 3
 
-        # Mock the behavior of repositories
-        self.car_repository.get_by_id.return_value = car
-        self.driver_repository.get_by_id.return_value = driver
-        self.client_repository.get_by_id.return_value = client
-        self.order_repository.get_all = MagicMock(return_value=[])
-        self.order_repository.add = MagicMock()
         # Test create_order method
-        order = self.order_service.create_order(car_id=1, driver_id=1, client_id=1,
+        order = self.order_service.create_order(car, driver, client,
                                                 start_location=start_location,
                                                 current_driver_location=current_driver_location,
                                                 end_location=end_location,
@@ -98,7 +87,7 @@ class TestOrderService(unittest.TestCase):
 
         # Mock the behavior of repositories
         self.order_repository.get_by_id = MagicMock(return_value=order)
-        self.order_repository.update =  MagicMock(return_value=order)
+        self.order_repository.update = MagicMock(return_value=order)
 
         # Test update_start_location method
         updated_order = self.order_service.update_start_location(order_id=1, new_start_location=Location(2, 2))
