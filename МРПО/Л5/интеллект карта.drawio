@@ -1,0 +1,67 @@
+<mxfile host="app.diagrams.net" modified="2024-03-29T12:10:54.592Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:124.0) Gecko/20100101 Firefox/124.0" etag="N8LRBQrGiJS3-qZpIVOk" version="24.2.1" type="device">
+  <diagram name="Page-1" id="jdjp-aWtjAmsAdYnlfYc">
+    <mxGraphModel dx="1434" dy="774" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="4iMVbEmXEmmf11WKQkyN-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="4iMVbEmXEmmf11WKQkyN-8" target="4iMVbEmXEmmf11WKQkyN-9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="4iMVbEmXEmmf11WKQkyN-17" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="4iMVbEmXEmmf11WKQkyN-8" target="4iMVbEmXEmmf11WKQkyN-16">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="4iMVbEmXEmmf11WKQkyN-23" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="4iMVbEmXEmmf11WKQkyN-8" target="4iMVbEmXEmmf11WKQkyN-22">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="4iMVbEmXEmmf11WKQkyN-8" value="Сервис такси" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="400" y="330" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="4iMVbEmXEmmf11WKQkyN-13" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="4iMVbEmXEmmf11WKQkyN-9" target="4iMVbEmXEmmf11WKQkyN-12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="4iMVbEmXEmmf11WKQkyN-15" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="4iMVbEmXEmmf11WKQkyN-9" target="4iMVbEmXEmmf11WKQkyN-14">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="4iMVbEmXEmmf11WKQkyN-9" value="Система геолокации" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="100" y="160" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="4iMVbEmXEmmf11WKQkyN-12" value="Определение местоположения пассажиров" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="100" y="70" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="4iMVbEmXEmmf11WKQkyN-14" value="&lt;pre&gt;&lt;code class=&quot;!whitespace-pre hljs language-diff&quot;&gt;Отслеживание &lt;br&gt;местоположения&lt;br&gt; водителей&lt;/code&gt;&lt;/pre&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="250" y="70" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="4iMVbEmXEmmf11WKQkyN-19" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="4iMVbEmXEmmf11WKQkyN-16" target="4iMVbEmXEmmf11WKQkyN-18">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="4iMVbEmXEmmf11WKQkyN-21" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="4iMVbEmXEmmf11WKQkyN-16" target="4iMVbEmXEmmf11WKQkyN-20">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="4iMVbEmXEmmf11WKQkyN-16" value="&lt;pre&gt;&lt;code class=&quot;!whitespace-pre hljs language-diff&quot;&gt;Система&lt;br&gt; оплаты и расчетов&lt;/code&gt;&lt;/pre&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="400" y="190" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="4iMVbEmXEmmf11WKQkyN-18" value="&lt;pre&gt;&lt;code class=&quot;!whitespace-pre hljs language-diff&quot;&gt;Электронные платежи&lt;/code&gt;&lt;/pre&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="400" y="50" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="4iMVbEmXEmmf11WKQkyN-20" value="&lt;pre&gt;&lt;code class=&quot;!whitespace-pre hljs language-diff&quot;&gt;Безналичные расчеты&lt;/code&gt;&lt;/pre&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="620" y="190" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="4iMVbEmXEmmf11WKQkyN-25" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="4iMVbEmXEmmf11WKQkyN-22" target="4iMVbEmXEmmf11WKQkyN-24">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="4iMVbEmXEmmf11WKQkyN-27" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="4iMVbEmXEmmf11WKQkyN-22" target="4iMVbEmXEmmf11WKQkyN-26">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="4iMVbEmXEmmf11WKQkyN-22" value="&lt;pre&gt;&lt;code class=&quot;!whitespace-pre hljs language-diff&quot;&gt;Система обратной&lt;br&gt; связи&lt;/code&gt;&lt;/pre&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="400" y="470" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="4iMVbEmXEmmf11WKQkyN-24" value="&lt;br&gt;&lt;pre&gt;&lt;code class=&quot;!whitespace-pre hljs language-diff&quot;&gt;Отзывы и оценки &lt;br&gt;качества &lt;br&gt;обслуживания&lt;/code&gt;&lt;/pre&gt;&lt;div&gt;&lt;br/&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="200" y="470" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="4iMVbEmXEmmf11WKQkyN-26" value="&lt;pre&gt;&lt;code class=&quot;!whitespace-pre hljs language-diff&quot;&gt;Клиентская &lt;br&gt;поддержка&lt;/code&gt;&lt;/pre&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="410" y="590" width="120" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
