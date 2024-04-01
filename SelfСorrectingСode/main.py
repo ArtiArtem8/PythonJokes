@@ -3,17 +3,21 @@ import random
 from hamming_code import *
 
 
-data = [random.randint(0, 1) for i in range(11)]
-print("Data:", data)
-encoded_data = hamming_code(data)
-print("hamming", hamming_encode(data))
+data = [random.randint(0, 1) for i in range(4)]
+# data = [1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+# data = [0, 0, 0, 1]
+data = [1, 0, 0, 0, 0]
+# data = list(map(int, input("Enter data: ")))
+print("Data:", p(data))
 print()
-# FIXME: I dont know why, but encode not always work
-print(hamming_syndrome(encoded_data))
-print("Encoded Data:           ", encoded_data)
-encoded_data[5] ^= 1
-print("Encoded Data with error:", encoded_data)
-decoded_message = hamming_decode(encoded_data)
+
+encoded_data = hamming_encode(data)
+print("Encoded Data:           ", p(encoded_data))
+
+encoded_data[random.randint(0, len(encoded_data) - 1)] ^= 1
+print("Encoded Data with error:", p(encoded_data))
+
+decoded_message = decode(encoded_data)
 print()
-print("Decoded Data:", decoded_message)
-print("Decoded Data:", decoded_message == data)
+print("Decoded Data:", p(decoded_message))
+print("Decoded Data:", ["Fail", "Success"][decoded_message == data])
