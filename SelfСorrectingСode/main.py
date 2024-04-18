@@ -3,11 +3,11 @@ import random
 from hamming_code import *
 
 
-data = [random.randint(0, 1) for i in range(4)]
+# data = [random.randint(0, 1) for i in range(4)]
 # data = [1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 # data = [0, 0, 0, 1]
-data = [1, 0, 0, 0, 0]
-# data = list(map(int, input("Enter data: ")))
+# data = [1, 0, 0, 0, 0]
+data = list(map(int, input("Enter data: ")))
 print("Data:", p(data))
 print()
 
