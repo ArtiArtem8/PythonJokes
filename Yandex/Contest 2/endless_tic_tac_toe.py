@@ -39,7 +39,7 @@ def check(data):
                 count += 1
             if count == 5:
                 return True
-        return False
+        return False  # Todo: kys
 
     players_moves = {"First": set(), "Second": set()}
     for i, (r, c) in enumerate(data):
