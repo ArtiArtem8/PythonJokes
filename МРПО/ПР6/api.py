@@ -1,13 +1,19 @@
-
-from fastapi import FastAPI, HTTPException, Depends
-from sqlalchemy.orm import Session
-from pydantic import BaseModel
-from typing import List, Optional
+from fastapi import FastAPI, Depends
 from datetime import datetime
-from db_setup import setup_db, CarInfo, Location, Car, Client, Driver, Order, OrderCategory, OrderStatus, Base
+from typing import List
+
+from fastapi import FastAPI, Depends
+from pydantic import BaseModel
+from sqlalchemy.orm import Session
+from starlette.responses import HTMLResponse
+from starlette.staticfiles import StaticFiles
+
+from db_setup import CarInfo, Client, Driver, Order, OrderCategory, OrderStatus, Base
 from unit_of_work import UnitOfWork
 
 app = FastAPI()
+app.mount("/static", StaticFiles(directory="static"), name="static")
+
 
 class CarInfoModel(BaseModel):
     brand: str
@@ -15,15 +21,31 @@ class CarInfoModel(BaseModel):
     color: str
     year: int
 
+    class Config:
+        from_attributes = True
+
+
 class ClientModel(BaseModel):
     phone_number: str
 
+    class Config:
+        from_attributes = True
+
+
 class DriverModel(BaseModel):
-    pass
+    id: int
+
+    class Config:
+        from_attributes = True
+
 
 class LocationModel(BaseModel):
     latitude: float
     longitude: float
+
+    class Config:
+        from_attributes = True
+
 
 class OrderModel(BaseModel):
     car_id: int
@@ -37,10 +59,15 @@ class OrderModel(BaseModel):
     category: OrderCategory
     status: OrderStatus
 
+    class Config:
+        from_attributes = True
+
+
 # Dependency to get DB session
 def get_db():
     with UnitOfWork() as session:
         yield session
+
 
 # CRUD operations for CarInfo
 @app.post("/carinfo/", response_model=CarInfoModel)
@@ -51,10 +78,12 @@ def create_carinfo(car_info: CarInfoModel, session: Session = Depends(get_db)):
     session.refresh(db_car_info)
     return db_car_info
 
+
 @app.get("/carinfo/", response_model=List[CarInfoModel])
 def read_carinfos(skip: int = 0, limit: int = 10, session: Session = Depends(get_db)):
     carinfos = session.query(CarInfo).offset(skip).limit(limit).all()
     return carinfos
+
 
 # CRUD operations for Client
 @app.post("/client/", response_model=ClientModel)
@@ -65,24 +94,28 @@ def create_client(client: ClientModel, session: Session = Depends(get_db)):
     session.refresh(db_client)
     return db_client
 
+
 @app.get("/client/", response_model=List[ClientModel])
 def read_clients(skip: int = 0, limit: int = 10, session: Session = Depends(get_db)):
     clients = session.query(Client).offset(skip).limit(limit).all()
     return clients
 
+
 # CRUD operations for Driver
 @app.post("/driver/", response_model=DriverModel)
 def create_driver(driver: DriverModel, session: Session = Depends(get_db)):
-    db_driver = Driver()
+    db_driver = Driver(id=1)
     session.add(db_driver)
     session.commit()
     session.refresh(db_driver)
     return db_driver
 
+
 @app.get("/driver/", response_model=List[DriverModel])
 def read_drivers(skip: int = 0, limit: int = 10, session: Session = Depends(get_db)):
     drivers = session.query(Driver).offset(skip).limit(limit).all()
     return drivers
+
 
 # CRUD operations for Order
 @app.post("/order/", response_model=OrderModel)
@@ -93,16 +126,25 @@ def create_order(order: OrderModel, session: Session = Depends(get_db)):
     session.refresh(db_order)
     return db_order
 
+
 @app.get("/order/", response_model=List[OrderModel])
 def read_orders(skip: int = 0, limit: int = 10, session: Session = Depends(get_db)):
     orders = session.query(Order).offset(skip).limit(limit).all()
     return orders
+
 
 # Endpoint to clear all tables (for testing purposes)
 @app.delete("/clear/")
 def clear_all(session: Session = Depends(get_db)):
     clear_all_tables(session)
     return {"message": "All tables cleared"}
+
+
+@app.get("/", response_class=HTMLResponse)
+def read_index():
+    with open("static/index.html") as f:
+        return HTMLResponse(content=f.read(), status_code=200)
+
 
 def clear_all_tables(session: Session):
     """Delete all entries from all tables."""

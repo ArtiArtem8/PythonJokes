@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FastAPI Interaction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input, select {
+            margin-bottom: 10px;
+            padding: 5px;
+            width: 200px;
+        }
+        button {
+            padding: 5px 10px;
+        }
+        .result {
+            margin-top: 20px;
+            border: 1px solid #ddd;
+            padding: 10px;
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+
+<h1>FastAPI Interaction</h1>
+
+<h2>Create CarInfo</h2>
+<form id="carinfo-form">
+    <label for="brand">Brand</label>
+    <input type="text" id="brand" name="brand">
+
+    <label for="model">Model</label>
+    <input type="text" id="model" name="model">
+
+    <label for="color">Color</label>
+    <input type="text" id="color" name="color">
+
+    <label for="year">Year</label>
+    <input type="number" id="year" name="year">
+
+    <button type="submit">Create CarInfo</button>
+</form>
+<div id="carinfo-result" class="result"></div>
+
+<h2>Create Client</h2>
+<form id="client-form">
+    <label for="phone_number">Phone Number</label>
+    <input type="text" id="phone_number" name="phone_number">
+
+    <button type="submit">Create Client</button>
+</form>
+<div id="client-result" class="result"></div>
+
+<h2>Create Driver</h2>
+<form id="driver-form">
+    <button type="submit">Create Driver</button>
+</form>
+<div id="driver-result" class="result"></div>
+
+<h2>Create Order</h2>
+<form id="order-form">
+    <label for="car_id">Car ID</label>
+    <input type="number" id="car_id" name="car_id">
+
+    <label for="driver_id">Driver ID</label>
+    <input type="number" id="driver_id" name="driver_id">
+
+    <label for="client_id">Client ID</label>
+    <input type="number" id="client_id" name="client_id">
+
+    <label for="start_location_id">Start Location ID</label>
+    <input type="number" id="start_location_id" name="start_location_id">
+
+    <label for="current_driver_location_id">Current Driver Location ID</label>
+    <input type="number" id="current_driver_location_id" name="current_driver_location_id">
+
+    <label for="end_location_id">End Location ID</label>
+    <input type="number" id="end_location_id" name="end_location_id">
+
+    <label for="price">Price</label>
+    <input type="number" step="0.01" id="price" name="price">
+
+    <label for="start_date">Start Date</label>
+    <input type="datetime-local" id="start_date" name="start_date">
+
+    <label for="category">Category</label>
+    <select id="category" name="category">
+        <option value="Economic">Economic</option>
+        <option value="Comfort">Comfort</option>
+        <option value="Business">Business</option>
+        <option value="Other">Other</option>
+    </select>
+
+    <label for="status">Status</label>
+    <select id="status" name="status">
+        <option value="Pending">Pending</option>
+        <option value="In Progress">In Progress</option>
+        <option value="Waiting">Waiting</option>
+        <option value="Completed">Completed</option>
+        <option value="Cancelled">Cancelled</option>
+    </select>
+
+    <button type="submit">Create Order</button>
+</form>
+<div id="order-result" class="result"></div>
+
+<script>
+  document.getElementById('carinfo-form').addEventListener('submit', async function(event) {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    const data = Object.fromEntries(formData.entries());
+
+    const response = await fetch('/carinfo/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+    const result = await response.json();
+    document.getElementById('carinfo-result').innerText = JSON.stringify(result, null, 2);
+  });
+
+  document.getElementById('client-form').addEventListener('submit', async function(event) {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    const data = Object.fromEntries(formData.entries());
+
+    const response = await fetch('/client/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+    const result = await response.json();
+    document.getElementById('client-result').innerText = JSON.stringify(result, null, 2);
+  });
+
+  document.getElementById('driver-form').addEventListener('submit', async function(event) {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    const data = Object.fromEntries(formData.entries());
+    const response = await fetch('/driver/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+    const result = await response.json();
+    document.getElementById('driver-result').innerText = JSON.stringify(result, null, 2);
+  });
+
+  document.getElementById('order-form').addEventListener('submit', async function(event) {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    const data = Object.fromEntries(formData.entries());
+
+    const response = await fetch('/order/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+    const result = await response.json();
+    document.getElementById('order-result').innerText = JSON.stringify(result, null, 2);
+  });
+</script>
+
+</body>
+</html>

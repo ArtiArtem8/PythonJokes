@@ -96,7 +96,7 @@ for d in drivers:
 cars = session.query(Car).all()
 print("\nCars:")
 for car in cars:
-    print(f"Plate Number: {car.plate_number}, Seats: {car.seats}, "
+    print(f"id={car.id}:Plate Number: {car.plate_number}, Seats: {car.seats}, "
           f"Brand: {car.car_info.brand}, Model: {car.car_info.model}")
 
 # Retrieve all orders
